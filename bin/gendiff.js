@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { dataFromFileParse } from '../src/dataFromFileParse.js';
+import { dataFromFilesParse } from '../src/dataFromFileParse.js';
 const program = new Command();
 
 program

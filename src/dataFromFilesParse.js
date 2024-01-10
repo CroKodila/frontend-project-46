@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import _ from 'lodash';
+import fs from "fs";
+import path from "path";
+import _ from "lodash";
 
 // Comparison
 function generateDiff(obj1, obj2) {
@@ -17,18 +17,18 @@ function generateDiff(obj1, obj2) {
     }
     return [`- ${key}: ${obj1[key]}`, `+ ${key}: ${obj2[key]}`];
   });
-  return `{\n${_.flatten(diff).join('\n')}\n}`;
+  return `{\n${_.flatten(diff).join("\n")}\n}`;
 }
 
 // Reading and parsing data from files
 export function dataFromFilesParse(filepath1, filepath2) {
   const absolutePath1 = path.resolve(process.cwd(), filepath1);
   const absolutePath2 = path.resolve(process.cwd(), filepath2);
-  
-  const data1 = JSON.parse(fs.readFileSync(absolutePath1, 'utf8'));
-  const data2 = JSON.parse(fs.readFileSync(absolutePath2, 'utf8'));
-  
+
+  const data1 = JSON.parse(fs.readFileSync(absolutePath1, "utf8"));
+  const data2 = JSON.parse(fs.readFileSync(absolutePath2, "utf8"));
+
   const diff = generateDiff(data1, data2);
-  
+
   console.log(diff);
 }

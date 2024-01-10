@@ -16,7 +16,6 @@
   },
   "author": "CroKodila",
   "license": "ISC",
-  
   "dependencies": {
     "commander": "^11.1.0"
   }

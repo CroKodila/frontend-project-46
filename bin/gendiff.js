@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import dataFromFilesParse from '../src/dataFromFilesParse.js';
+import parse from '../src/parsers.js';
 
 const program = new Command();
 
@@ -9,9 +9,8 @@ program
   .arguments('<filepath1> <filepath2>')
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format <type>', 'output format')
-  .action((filepath1, filepath2, options) => {
-    const format = options.format || 'json';
-    dataFromFilesParse(filepath1, filepath2, format);
+  .action((filepath1, filepath2) => {
+    parse(filepath1, filepath2);
   });
 
 program.parse(process.argv);

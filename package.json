@@ -21,7 +21,8 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^11.1.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "yaml": "^2.3.4"
   },
   "devDependencies": {
     "@jest/globals": "^29.6.0",
@@ -34,5 +35,9 @@
     "jest-cli": "^29.7.0",
     "npm-check-updates": "^16.10.11",
     "simple-git-hooks": "^2.8.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/CroKodila/frontend-project-46/issues"
+  },
+  "homepage": "https://github.com/CroKodila/frontend-project-46#readme"
 }

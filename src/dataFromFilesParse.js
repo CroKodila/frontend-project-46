@@ -21,7 +21,7 @@ function generateDiff(obj1, obj2) {
 }
 
 // Reading and parsing data from files
-export function dataFromFilesParse(filepath1, filepath2) {
+export default function dataFromFilesParse(filepath1, filepath2) {
   const absolutePath1 = path.resolve(process.cwd(), filepath1);
   const absolutePath2 = path.resolve(process.cwd(), filepath2);
 

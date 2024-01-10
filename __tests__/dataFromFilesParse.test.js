@@ -1,8 +1,7 @@
-import path from 'path';
-import { dataFromFilesParse } from '../src/dataFromFilesParse.js';
-import {jest} from '@jest/globals';
+import path, { dirname } from 'path';
+import { jest } from '@jest/globals';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import dataFromFilesParse from '../src/dataFromFilesParse.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

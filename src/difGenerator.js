@@ -2,20 +2,33 @@ import _ from 'lodash';
 
 // Comparison
 export default function generateDiff(obj1, obj2) {
-  const keys = _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
-  const diff = keys.map((key) => {
-    if (_.isEqual(obj1[key], obj2[key])) {
-      return `  ${key}: ${obj1[key]}`;
-    }
-    if (!_.has(obj1, key)) {
-      return `+ ${key}: ${obj2[key]}`;
-    }
-    if (!_.has(obj2, key)) {
-      return `- ${key}: ${obj1[key]}`;
-    }
-    return [`- ${key}: ${obj1[key]}`, `+ ${key}: ${obj2[key]}`];
-  });
-  return `{\n${_.flatten(diff).join('\n')}\n}`;
+  const buildDiff = (innerObj1, innerObj2) => {
+    const keys = _.sortBy(_.union(Object.keys(innerObj1), Object.keys(innerObj2)));
+
+    return keys.reduce((acc, key) => {
+      const value1 = innerObj1[key];
+      const value2 = innerObj2[key];
+
+      if (_.isObject(value1) && _.isObject(value2)) {
+        acc[`  ${key}`] = buildDiff(value1, value2);
+      } else if (_.isEqual(value1, value2)) {
+        acc[`  ${key}`] = value1;
+      } else if (!_.has(innerObj1, key)) {
+        acc[`+ ${key}`] = value2;
+      } else if (!_.has(innerObj2, key)) {
+        acc[`- ${key}`] = value1;
+      } else {
+        acc[`- ${key}`] = value1;
+        acc[`+ ${key}`] = value2;
+      }
+
+      return acc;
+    }, {});
+  };
+
+  return buildDiff(obj1, obj2);
 }
 
-// Reading and parsing data from files
+
+
+

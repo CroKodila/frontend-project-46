@@ -28,7 +28,3 @@ export default function generateDiff(obj1, obj2) {
 
   return buildDiff(obj1, obj2);
 }
-
-
-
-
